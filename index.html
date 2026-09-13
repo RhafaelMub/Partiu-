@@ -448,6 +448,26 @@
     @media (max-width:560px){
       .hero-card{padding:18px;}
     }
+
+    /* ESCOLHA DE FASE — modal que intercepta todo CTA de inscrição */
+    .fase-modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:20px;}
+    .fase-modal.is-open{display:flex;}
+    .fase-modal-backdrop{position:absolute;inset:0;background:rgba(71,31,5,.55);}
+    .fase-modal-card{position:relative;z-index:1;background:var(--cream-2);border:3px solid var(--brown);border-radius:24px;padding:36px 34px;max-width:640px;width:100%;max-height:88vh;overflow-y:auto;box-shadow:8px 8px 0 var(--brown);}
+    .fase-modal-card .eyebrow{margin-bottom:14px;}
+    .fase-modal-card h3{font-size:24px;margin-bottom:10px;}
+    .fase-modal-card>p{font-size:15px;line-height:1.5;color:var(--brown-2);font-weight:500;margin-bottom:22px;}
+    .fase-modal-close{position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:50%;border:2px solid var(--line);background:#fff;color:var(--brown);display:flex;align-items:center;justify-content:center;cursor:pointer;}
+    .fase-modal-close:hover{background:var(--cream);}
+    .fase-modal-options{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .fase-modal-option{display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-decoration:none;background:#fff;border:2.5px solid var(--line);border-radius:18px;padding:20px;transition:border-color .15s ease,transform .15s ease;}
+    .fase-modal-option:hover,.fase-modal-option:focus-visible{border-color:var(--brown);transform:translateY(-2px);}
+    .fase-modal-option strong{font-family:'Archivo',sans-serif;font-weight:800;font-size:16px;color:var(--brown);text-transform:uppercase;margin-top:4px;}
+    .fase-modal-option>span:last-child{font-size:13px;line-height:1.5;color:var(--brown-2);font-weight:500;}
+    @media (max-width:560px){
+      .fase-modal-options{grid-template-columns:1fr;}
+      .fase-modal-card{padding:28px 22px;}
+    }
   </style>
 </head>
 <body>
@@ -464,7 +484,7 @@
         <a href="#cursos">Palestras e cursos</a>
         <a href="#parcerias">Como participar</a>
         <a href="#inscricao">Contato</a>
-        <a href="https://inscricao.partiuaprenderempreender.com.br" target="_blank" rel="noopener" class="btn btn-primary" style="padding:9px 20px;font-size:13px;box-shadow:3px 3px 0 var(--brown);">Quero me inscrever</a>
+        <a href="https://inscricao.partiuaprenderempreender.com.br" target="_blank" rel="noopener" class="btn btn-primary js-inscricao-cta" style="padding:9px 20px;font-size:13px;box-shadow:3px 3px 0 var(--brown);">Quero me inscrever</a>
       </div>
       <label for="nav-toggle" class="burger"><span></span><span></span><span></span></label>
     </div>
@@ -476,7 +496,7 @@
     <a href="#cursos">Palestras e cursos</a>
     <a href="#parcerias">Como participar</a>
     <a href="#inscricao">Contato</a>
-    <a href="https://inscricao.partiuaprenderempreender.com.br" target="_blank" rel="noopener">Quero me inscrever</a>
+    <a href="https://inscricao.partiuaprenderempreender.com.br" target="_blank" rel="noopener" class="js-inscricao-cta">Quero me inscrever</a>
   </label>
 
   <!-- HERO CAROUSEL -->
@@ -491,7 +511,7 @@
         <h1>Projeto <span>Partiu!</span> Aprender &amp; Empreender</h1>
         <p class="hc-lead">Cursos, oficinas, mentorias e consultorias gratuitas que transformam necessidade em negócio, fortalecendo a economia de Cosmópolis, Paulínia e São José dos Campos.</p>
         <div class="hc-actions">
-          <a href="https://inscricao.partiuaprenderempreender.com.br" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Quero me inscrever</a>
+          <a href="https://inscricao.partiuaprenderempreender.com.br" target="_blank" rel="noopener" class="btn btn-primary btn-lg js-inscricao-cta">Quero me inscrever</a>
           <a class="hc-jump" href="#publico">Feito para quem está pronto <svg width="14" height="14" viewBox="0 0 24 24"><path d="M5 9l7 7 7-7" stroke="currentColor" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         </div>
         <span class="hc-edital-tag">Edital Socioambiental 2023 · Programa Petrobras Socioambiental</span>
@@ -723,7 +743,7 @@
           <h3>Tenho 18 anos ou mais e quero empreender</h3>
           <p>Você mora em um dos territórios do Partiu!, tem 18 anos ou mais e quer aprender, se capacitar e dar os primeiros passos no seu próprio negócio? Faça sua inscrição e comece a sua jornada.</p>
           <span class="caminho-note">Tem menos de 18 anos? As ações para jovens vão acontecer direto nas escolas, nas palestras do Jovem Empreendedor. Fique tranquilo, chegaremos até você.</span>
-          <a href="https://inscricao.partiuaprenderempreender.com.br" target="_blank" rel="noopener" class="btn btn-primary">Quero me inscrever</a>
+          <a href="https://inscricao.partiuaprenderempreender.com.br" target="_blank" rel="noopener" class="btn btn-primary js-inscricao-cta">Quero me inscrever</a>
         </div>
       </div>
     </div>
@@ -834,7 +854,7 @@
       <h2>Quer saber mais?</h2>
       <p>Inscreva-se na jornada Partiu! Aprender &amp; Empreender e acompanhe as novidades de perto.</p>
       <div class="cta-actions">
-        <a href="https://inscricao.partiuaprenderempreender.com.br" target="_blank" rel="noopener" class="btn" style="background:var(--yellow);color:var(--brown);border-color:var(--brown);box-shadow:4px 4px 0 var(--brown-2);">
+        <a href="https://inscricao.partiuaprenderempreender.com.br" target="_blank" rel="noopener" class="btn js-inscricao-cta" style="background:var(--yellow);color:var(--brown);border-color:var(--brown);box-shadow:4px 4px 0 var(--brown-2);">
           <svg class="cta-form-icn" viewBox="0 0 24 24" fill="none"><path d="M8 2h8l4 4v16H4V2z" stroke="var(--brown)" stroke-width="1.8" stroke-linejoin="round" fill="#fff"/><path d="M16 2v4h4" stroke="var(--brown)" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 12.5l2.3 2.3L16 9.5" stroke="var(--brown)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           Preencher formulário de inscrição
         </a>
@@ -880,6 +900,32 @@
       <div class="foot-bottom">Realização Movimento União BR &amp; Instituto da Criança · Parceria Petrobras · Edital Socioambiental 2023</div>
     </div>
   </footer>
+
+  <!-- ESCOLHA DE FASE — abre antes de qualquer clique em "inscrever-se",
+       pra pessoa dizer se é Fase 1 ou Fase 2 antes de ir pro formulário -->
+  <div class="fase-modal" id="fase-modal" aria-hidden="true">
+    <div class="fase-modal-backdrop" data-fase-close></div>
+    <div class="fase-modal-card" role="dialog" aria-modal="true" aria-labelledby="fase-modal-title">
+      <button type="button" class="fase-modal-close" data-fase-close aria-label="Fechar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+      </button>
+      <span class="eyebrow" style="color:var(--pink-dark);border-color:var(--pink-dark);">Antes de continuar</span>
+      <h3 id="fase-modal-title">Em qual fase você entra?</h3>
+      <p>Escolha a fase que combina com seu momento pra ir direto ao formulário certo.</p>
+      <div class="fase-modal-options">
+        <a href="https://inscricao.partiuaprenderempreender.com.br/" target="_blank" rel="noopener" class="fase-modal-option">
+          <span class="eyebrow" style="color:var(--blue-dark);border-color:var(--blue-dark);">Fase 1</span>
+          <strong>Está começando agora?</strong>
+          <span>Desenvolvimento humano, oficina de gestão, curso técnico, mentorias e consultoria individual.</span>
+        </a>
+        <a href="https://inscricao.partiuaprenderempreender.com.br/" target="_blank" rel="noopener" class="fase-modal-option">
+          <span class="eyebrow" style="color:var(--green-dark);border-color:var(--green-dark);">Fase 2</span>
+          <strong>Já tem um negócio ou curso técnico?</strong>
+          <span>Oficina de gestão, mentorias, consultoria individual e cursos de marketing, finanças e planejamento.</span>
+        </a>
+      </div>
+    </div>
+  </div>
 
   <script>
   (function(){
@@ -1193,6 +1239,39 @@
     if (!toggle || !links.length) return;
     links.forEach(function(a){
       a.addEventListener('click', function(){ toggle.checked = false; });
+    });
+  })();
+
+  // ESCOLHA DE FASE — todo botão/link de inscrição (.js-inscricao-cta) abre
+  // o modal em vez de ir direto pro formulário, pra pessoa escolher Fase 1
+  // ou Fase 2 primeiro; o href original fica como fallback se o JS falhar.
+  (function(){
+    var modal = document.getElementById('fase-modal');
+    var triggers = document.querySelectorAll('.js-inscricao-cta');
+    if (!modal || !triggers.length) return;
+    var closers = modal.querySelectorAll('[data-fase-close]');
+    var lastFocused = null;
+
+    function openModal(e){
+      e.preventDefault();
+      lastFocused = document.activeElement;
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      var firstOption = modal.querySelector('.fase-modal-option');
+      if (firstOption) firstOption.focus();
+    }
+    function closeModal(){
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (lastFocused && lastFocused.focus) lastFocused.focus();
+    }
+
+    triggers.forEach(function(t){ t.addEventListener('click', openModal); });
+    closers.forEach(function(c){ c.addEventListener('click', closeModal); });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
     });
   })();
   </script>
