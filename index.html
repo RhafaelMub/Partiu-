@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partiu!</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -96,7 +97,12 @@
 
     /* HERO CAROUSEL */
     .hero-carousel{position:relative;overflow:hidden;height:90vh;min-height:600px;max-height:840px;background:var(--brown);}
-    @media (max-width:700px){.hero-carousel{height:100vh;min-height:580px;max-height:760px;}}
+    @media (max-width:700px){.hero-carousel{
+      /* 100vh sozinho ignora a altura do .nav (fixo/sticky) acima do carrossel,
+         então o carrossel + nav juntos ficavam mais altos que a tela — cortando
+         as setas/bolinhas de navegação até a pessoa rolar a página */
+      height:calc(100vh - 58px);height:calc(100svh - 58px);min-height:520px;max-height:700px;
+    }}
 
     .hc-slide{position:absolute;inset:0;opacity:0;visibility:hidden;display:flex;align-items:flex-end;z-index:1;transition:opacity .6s ease,visibility 0s linear .6s;}
     .hc-slide.is-active{opacity:1;visibility:visible;z-index:2;transition:opacity .6s ease;}
@@ -240,24 +246,6 @@
     .org-item p{font-size:14.5px;line-height:1.55;color:var(--brown-2);font-weight:500;}
     @media (max-width:700px){.org-item:nth-child(2),.org-item:nth-child(3){margin-top:0;}}
 
-    /* CONTEXTO — circular stat blobs on brown, wave edges */
-    .sec-contexto{background:var(--blue-dark);color:#fff;}
-    .sec-contexto .section-head h2{color:#fff;}
-    .sec-contexto .section-head p{color:#E7D7C4;}
-    .sec-contexto .intro{max-width:760px;margin:0 auto 40px;text-align:center;color:#F1E4D2;font-size:16px;line-height:1.6;font-weight:500;}
-    .stat-blob-row{display:flex;justify-content:center;align-items:center;gap:26px;flex-wrap:wrap;margin-bottom:30px;}
-    .stat-blob{
-      width:196px;height:196px;border-radius:50%;background:rgba(255,255,255,.08);
-      display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:18px;
-      border:2px solid rgba(255,255,255,.22);
-    }
-    .stat-blob:nth-child(1){transform:translateY(-6px) rotate(-2deg);}
-    .stat-blob:nth-child(2){transform:translateY(14px) rotate(1.5deg);}
-    .stat-blob:nth-child(3){transform:translateY(-10px) rotate(-1deg);}
-    .stat-blob b{display:block;font-family:'Archivo',sans-serif;font-weight:900;font-size:34px;color:var(--yellow);margin-bottom:6px;}
-    .stat-blob p{font-size:12.5px;line-height:1.4;color:#F1E4D2;font-weight:500;}
-    .closing-line{max-width:680px;margin:0 auto;text-align:center;font-family:'Archivo',sans-serif;font-weight:700;font-size:17px;color:#fff;text-transform:none;}
-    @media (max-width:700px){.stat-blob{width:100%;max-width:280px;height:auto;border-radius:26px;padding:22px;transform:none !important;}}
 
     /* PUBLICO — pastel blobs, soft shadow, gentle rotation */
     .aud-blob-row{display:flex;flex-wrap:wrap;justify-content:center;gap:22px;max-width:1000px;margin:0 auto;}
@@ -290,13 +278,9 @@
       .rcard-dot:hover{background:var(--blue);transform:scale(1.2);}
       .rcard-dot.is-active{background:var(--brown);width:20px;border-radius:5px;}
 
-      .rcard-track{flex-wrap:nowrap !important;justify-content:flex-start !important;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:0 -20px;padding:4px 20px 14px;}
+      .rcard-track{flex-wrap:nowrap !important;justify-content:flex-start !important;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:0 -20px;padding:16px 26px 40px;}
       .rcard-track::-webkit-scrollbar{display:none;}
       .rcard-track.aud-blob-row .aud-blob{flex:0 0 82%;max-width:82%;scroll-snap-align:center;}
-      .rcard-track.fmt-grid{display:flex !important;}
-      .rcard-track.fmt-grid .fmt-card{flex:0 0 85%;max-width:85%;scroll-snap-align:center;}
-      .rcard-track.stat-blob-row{justify-content:flex-start;}
-      .rcard-track.stat-blob-row .stat-blob{flex:0 0 82% !important;max-width:82% !important;width:auto !important;scroll-snap-align:center;}
     }
 
     /* JORNADA — a literal, winding path connecting each step, footsteps that
@@ -419,21 +403,7 @@
 
     /* CURSOS OFERECIDOS */
     .sec-cursos{background:var(--yellow);}
-    .fmt-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;max-width:1080px;margin:0 auto;}
-    .fmt-card{background:var(--cream-2);border:2.5px solid var(--brown);border-radius:20px;padding:26px 22px;box-shadow:5px 5px 0 var(--line);}
-    .fmt-card h3{font-size:16px;margin-bottom:6px;}
-    .fmt-card:nth-child(1) h3{color:var(--orange);}
-    .fmt-card:nth-child(2) h3{color:var(--green-dark);}
-    .fmt-card:nth-child(3) h3{color:var(--blue-dark);}
-    .fmt-card:nth-child(4) h3{color:var(--pink-dark);}
-    .fmt-meta{display:block;font-family:'Archivo',sans-serif;font-weight:800;font-size:11.5px;letter-spacing:.01em;color:var(--brown);opacity:.65;margin-bottom:10px;}
-    .fmt-card p{font-size:13.5px;line-height:1.55;color:var(--brown-2);font-weight:500;}
-    .fmt-areas{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
-    .fmt-area-tag{background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:4px 11px;font-size:11px;font-weight:700;color:var(--brown-2);}
-    @media (max-width:900px){.fmt-grid{grid-template-columns:repeat(2,1fr);}}
-    @media (max-width:520px){.fmt-grid{grid-template-columns:1fr;}}
-
-    .fmt-extra{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:1080px;margin:24px auto 0;}
+    .fmt-extra{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:1080px;margin:0 auto;}
     .fmt-extra-card{background:#fff;border:2.5px solid var(--line);border-radius:20px;padding:28px 30px;}
     .fmt-extra-card .eyebrow{margin-bottom:12px;}
     .fmt-extra-card h3{font-size:19px;margin-bottom:8px;}
@@ -479,7 +449,6 @@
       .hero-card{padding:18px;}
     }
   </style>
-
 </head>
 <body>
 <div class="page">
@@ -721,61 +690,19 @@
     <div class="wrap">
       <div class="section-head">
         <span class="eyebrow" style="color:var(--pink-dark);border-color:var(--pink-dark);">O que dá para pedir</span>
-        <h2>Palestras e cursos oferecidos</h2>
-        <p>Do primeiro contato ao acompanhamento individual, veja como cada etapa acontece na prática, do formato à carga horária.</p>
-      </div>
-      <div class="fmt-grid rcard-track">
-        <div class="fmt-card">
-          <h3>Palestra de sensibilização</h3>
-          <p>Uma conversa inicial, com conteúdo adaptado a cada público, que apresenta o programa e desperta o interesse pelo empreendedorismo como caminho de renda. Ideal para um primeiro contato.</p>
-        </div>
-        <div class="fmt-card">
-          <h3>Oficinas de desenvolvimento e gestão</h3>
-          <p>Aulas presenciais sobre autoconhecimento, identidade e habilidades socioemocionais, seguidas de oficinas práticas de gestão para quem pensa em abrir ou já toca um negócio.</p>
-        </div>
-        <div class="fmt-card">
-          <h3>Curso técnico</h3>
-          <p>Qualificação profissional com tutores e material didático próprios, em temas escolhidos conforme a vocação de cada território, entre eles:</p>
-          <div class="fmt-areas">
-            <span class="fmt-area-tag">Beleza</span>
-            <span class="fmt-area-tag">Produção e venda alimentícia</span>
-            <span class="fmt-area-tag">Corte e costura</span>
-            <span class="fmt-area-tag">Jardinagem</span>
-            <span class="fmt-area-tag">Sistemas elétricos</span>
-            <span class="fmt-area-tag">Outros</span>
-          </div>
-        </div>
-        <div class="fmt-card">
-          <h3>Mentoria e acompanhamento</h3>
-          <p>Acompanhamento remoto e individualizado para tirar dúvidas do negócio, além de cursos de aperfeiçoamento em marketing, finanças e planejamento para quem já concluiu a formação.</p>
-        </div>
-      </div>
-      <div class="rcard-dots">
-        <button type="button" class="rcard-dot is-active" aria-label="Card 1"></button>
-        <button type="button" class="rcard-dot" aria-label="Card 2"></button>
-        <button type="button" class="rcard-dot" aria-label="Card 3"></button>
-        <button type="button" class="rcard-dot" aria-label="Card 4"></button>
+        <h2>Em qual fase você entra?</h2>
+        <p>O Partiu! funciona em duas fases, para dois momentos diferentes de quem empreende. Veja qual delas é a sua.</p>
       </div>
       <div class="fmt-extra">
         <div class="fmt-extra-card">
           <span class="eyebrow" style="color:var(--blue-dark);border-color:var(--blue-dark);">Fase 1</span>
           <h3>Está começando agora?</h3>
-          <p>Desenvolvimento humano, oficina de gestão, curso técnico e mentorias individuais. A Fase 1 é o ponto de partida ideal para quem quer aprender do zero e dar os primeiros passos no próprio negócio.</p>
+          <p>Desenvolvimento humano, oficina de gestão, curso técnico, mentorias e consultoria individual. A Fase 1 é o ponto de partida ideal para quem quer se formar do zero e estruturar o próprio negócio.</p>
         </div>
         <div class="fmt-extra-card">
           <span class="eyebrow" style="color:var(--green-dark);border-color:var(--green-dark);">Fase 2</span>
-          <h3>Já concluiu a Fase 1?</h3>
-          <p>Cursos de marketing, finanças e planejamento. A Fase 2 é indicada para quem já passou pela Fase 1 e quer profissionalizar e fazer o negócio que já toca crescer.</p>
-        </div>
-        <div class="fmt-extra-card">
-          <span class="eyebrow" style="color:var(--pink-dark);border-color:var(--pink-dark);">Direto nas escolas</span>
-          <h3>Jovem Empreendedor</h3>
-          <p>Ciclos de palestras dentro de escolas públicas de ensino médio, para jovens de 16 a 18 anos. Em encontros de 1h30, mostramos como uma ideia pode virar negócio e o empreendedorismo se tornar um caminho de futuro.</p>
-        </div>
-        <div class="fmt-extra-card">
-          <span class="eyebrow" style="color:var(--orange);border-color:var(--orange);">Onde tudo acontece</span>
-          <h3>Núcleos comunitários</h3>
-          <p>Espaços de formação montados dentro dos próprios territórios, em Cosmópolis, Paulínia e São José dos Campos, além de visitas a escolas, associações e organizações locais para levar o programa a quem mais precisa.</p>
+          <h3>Já tem um negócio ou curso técnico?</h3>
+          <p>Oficina de gestão, mentorias, consultoria individual e cursos de marketing, finanças e planejamento. A Fase 2 é para quem já empreende ou já se qualificou e quer profissionalizar a gestão do negócio, sem passar pelo Desenvolvimento Humano ou pelo Curso Técnico.</p>
         </div>
       </div>
     </div>
@@ -795,7 +722,7 @@
           <span class="eyebrow">Para maiores de 18 anos</span>
           <h3>Tenho 18 anos ou mais e quero empreender</h3>
           <p>Você mora em um dos territórios do Partiu!, tem 18 anos ou mais e quer aprender, se capacitar e dar os primeiros passos no seu próprio negócio? Faça sua inscrição e comece a sua jornada.</p>
-          <span class="caminho-note">Tem menos de 18 anos? As ações para jovens acontecem direto nas escolas, nas palestras do Jovem Empreendedor.</span>
+          <span class="caminho-note">Tem menos de 18 anos? As ações para jovens vão acontecer direto nas escolas, nas palestras do Jovem Empreendedor. Fique tranquilo, chegaremos até você.</span>
           <a href="https://inscricao.partiuaprenderempreender.com.br" target="_blank" rel="noopener" class="btn btn-primary">Quero me inscrever</a>
         </div>
       </div>
@@ -853,41 +780,6 @@
       </div>
     </div>
   </section>
-
-  <div class="wave"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,60 L1440,0 L1440,60 Z" fill="var(--blue-dark)"/></svg></div>
-
-  <!-- CONTEXTO -->
-  <section class="sec-contexto" id="contexto">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow" style="background:var(--brown);color:var(--yellow);border-color:var(--yellow);">O momento é agora</span>
-        <h2>Aqui já existe vontade de empreender. Queremos abrir o caminho.</h2>
-      </div>
-      <p class="intro">Cosmópolis, Paulínia e São José dos Campos têm economias fortes, com polos industriais e de tecnologia, e gente com muita vontade de empreender em cada bairro. O Partiu! nasce para dar a esse potencial a formação, o apoio e as portas certas para crescer.</p>
-      <div class="stat-blob-row rcard-track">
-        <div class="stat-blob">
-          <b style="font-size:26px;">Iniciativa</b>
-          <p>A maioria de quem empreende na região começou o próprio negócio por conta própria: a vontade de crescer já está aqui.</p>
-        </div>
-        <div class="stat-blob">
-          <b style="font-size:26px;">Formação</b>
-          <p>Grande parte de quem empreende ainda não teve acesso a uma formação técnica completa. É exatamente aí que a jornada faz a diferença.</p>
-        </div>
-        <div class="stat-blob">
-          <b>3 cidades</b>
-          <p>com economias fortes e diversas, prontas para levar esse crescimento a mais gente em cada uma delas.</p>
-        </div>
-      </div>
-      <div class="rcard-dots">
-        <button type="button" class="rcard-dot is-active" aria-label="Card 1"></button>
-        <button type="button" class="rcard-dot" aria-label="Card 2"></button>
-        <button type="button" class="rcard-dot" aria-label="Card 3"></button>
-      </div>
-      <p class="closing-line">Acreditamos que, com o apoio certo, cada pessoa pode transformar vontade em negócio, e negócio em renda para toda a família.</p>
-    </div>
-  </section>
-
-  <div class="wave"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,0 L1440,60 L0,60 Z" fill="var(--blue-dark)"/></svg></div>
 
   <!-- SOBRE -->
   <section class="sec-sobre" id="sobre">
@@ -1032,25 +924,38 @@
       var dotsWrap = track.nextElementSibling;
       if (!dotsWrap || !dotsWrap.classList.contains('rcard-dots')) return;
       var dots = Array.prototype.slice.call(dotsWrap.querySelectorAll('.rcard-dot'));
-      var n = track.children.length;
+      var cards = Array.prototype.slice.call(track.children);
+      var n = cards.length;
       var current = 0;
       function setActive(idx){
         current = idx;
         dots.forEach(function(d, i){ d.classList.toggle('is-active', i === idx); });
       }
+      // cada card ocupa uma % da largura (82%/85%), não 100% — então o índice
+      // não pode vir de scrollLeft/clientWidth (isso nunca chega ao último
+      // card); em vez disso comparamos com a posição real de cada card
+      function closestIndex(){
+        var pos = track.scrollLeft;
+        var maxScroll = track.scrollWidth - track.clientWidth;
+        if (pos >= maxScroll - 1) return n - 1;
+        var best = 0, bestDist = Infinity;
+        cards.forEach(function(card, i){
+          var dist = Math.abs(card.offsetLeft - pos);
+          if (dist < bestDist){ bestDist = dist; best = i; }
+        });
+        return best;
+      }
       function goTo(idx){
         idx = Math.max(0, Math.min(n - 1, idx));
         setActive(idx);
-        track.scrollTo({ left: idx * track.clientWidth, behavior: 'smooth' });
+        track.scrollTo({ left: cards[idx].offsetLeft, behavior: 'smooth' });
       }
       dots.forEach(function(d, i){ d.addEventListener('click', function(){ goTo(i); }); });
       var scrollTimer = null;
       track.addEventListener('scroll', function(){
         if (scrollTimer) window.clearTimeout(scrollTimer);
         scrollTimer = window.setTimeout(function(){
-          var w = track.clientWidth || 1;
-          var idx = Math.max(0, Math.min(n - 1, Math.round(track.scrollLeft / w)));
-          setActive(idx);
+          setActive(closestIndex());
         }, 100);
       }, { passive: true });
     });
@@ -1291,7 +1196,5 @@
     });
   })();
   </script>
-
-
 </body>
 </html>
